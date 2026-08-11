@@ -18,7 +18,6 @@ font.weight = "Regular"
 font.em = fontem
 font.ascent = fontem
 font.descent = 0
-font.version = "1.0"
 
 mappingfile = open("chars/mapping.json", "r")
 mapping = json.load(mappingfile)
