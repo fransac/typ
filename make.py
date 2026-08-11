@@ -7,7 +7,7 @@ import tempfile
 fontname = "Typ"
 charsdir = "chars"
 charwidth, charheight = 5, 5
-fontem = 300
+fontem = 400
 
 font = fontforge.font()
 
