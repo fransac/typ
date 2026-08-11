@@ -23,6 +23,8 @@ mappingfile = open("chars/mapping.json", "r")
 mapping = json.load(mappingfile)
 mappingfile.close()
 
+# If the given grid is empty, it returns an empty string; otherwise, it returns
+# the SVG string based on the grid.
 def gridtosvg(grid):
 	pixels = []
 
@@ -30,6 +32,9 @@ def gridtosvg(grid):
 		for x in range(charwidth):
 			if grid.replace("\n", "")[y * charwidth + x] == "#":
 				pixels.append([x, y])
+
+	if not pixels:
+		return ""
 
 	svg = '<svg xmlns="http://www.w3.org/2000/svg" '
 	svg += f'width="{charwidth}" height="{charheight}" '
@@ -39,10 +44,6 @@ def gridtosvg(grid):
 	for p in pixels:
 		svg += f'<rect x="{p[0]}" y="{p[1]}" width="1" height="1" '
 		svg += 'fill="#000000" shape-rendering="crispEdges"></rect>'
-
-	if not pixels:
-		svg += '<rect x="0" y="0" width="0" height="0" fill="none">'
-		svg += '</rect>'
 
 	svg += '</svg>'
 
@@ -61,17 +62,20 @@ for filename, chars in mapping.items():
 	svg = gridtosvg(file.read())
 	file.close()
 
-	tmp = tempfile.NamedTemporaryFile(delete=True, mode="w+", suffix=".svg")
-	tmp.write(svg)
-	tmp.seek(0)
+	if svg:
+		tmp = tempfile.NamedTemporaryFile(delete=True, mode="w+",
+		                                  suffix=".svg")
+		tmp.write(svg)
+		tmp.seek(0)
 
 	for c in chars:
 		glyph = font.createMappedChar(ord(c))
-		glyph.importOutlines(tmp.name)
 		glyph.width = fontem
 		glyph.vwidth = fontem
-		glyph.left_side_bearing = round(fontem / charwidth / 2)
-		glyph.right_side_bearing = round(fontem / charwidth / 2)
+		if svg:
+			glyph.importOutlines(tmp.name)
+			glyph.left_side_bearing = round(fontem / charwidth / 2)
+			glyph.right_side_bearing = round(fontem / charwidth / 2)
 
 	tmp.close()
 
