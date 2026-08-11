@@ -35,5 +35,23 @@
 	"x": ["X", "x"],
 	"y": ["Y", "y"],
 	"z": ["Z", "z"],
-	"space": [" "]
+
+	"space": [" "],
+
+	"asterisk": ["*"],
+	"backslash": ["\\"],
+	"closedparen": [")"],
+	"colon": [":"],
+	"comma": [","],
+	"dot": ["."],
+	"equal": ["="],
+	"exclamation": ["!"],
+	"minus": ["-"],
+	"openparen": ["("],
+	"plus": ["+"],
+	"question": ["?"],
+	"quote": ["'"],
+	"quotes": ["\""],
+	"semicolon": [";"],
+	"slash": ["/"]
 }
