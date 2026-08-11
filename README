@@ -2,3 +2,9 @@ Typ
 ===
 
 Typeface.
+
+Requirements
+------------
+
+- Python 3
+- FontForge
