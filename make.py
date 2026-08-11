@@ -6,7 +6,7 @@ import tempfile
 
 fontname = "Typ"
 charsdir = "chars"
-charwidth, charheight = 3, 3
+charwidth, charheight = 5, 5
 fontem = 300
 
 font = fontforge.font()
@@ -55,6 +55,8 @@ for filename, chars in mapping.items():
 	if not os.path.exists(filepath):
 		print(f"{filepath} does not exist.")
 		continue
+
+	print(f'Making character "{filename}".')
 
 	file = open(filepath, "r")
 	svg = gridtosvg(file.read())
