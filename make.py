@@ -23,8 +23,7 @@ mappingfile = open("chars/mapping.json", "r")
 mapping = json.load(mappingfile)
 mappingfile.close()
 
-# If the given grid is empty, it returns an empty string; otherwise, it returns
-# the SVG string based on the grid.
+# It returns the SVG string based on the grid.
 def gridtosvg(grid):
 	pixels = []
 
@@ -32,9 +31,6 @@ def gridtosvg(grid):
 		for x in range(charwidth):
 			if grid.replace("\n", "")[y * charwidth + x] == "#":
 				pixels.append([x, y])
-
-	if not pixels:
-		return ""
 
 	svg = '<svg xmlns="http://www.w3.org/2000/svg" '
 	svg += f'width="{charwidth}" height="{charheight}" '
@@ -62,20 +58,16 @@ for filename, chars in mapping.items():
 	svg = gridtosvg(file.read())
 	file.close()
 
-	if svg:
-		tmp = tempfile.NamedTemporaryFile(delete=True, mode="w+",
-		                                  suffix=".svg")
-		tmp.write(svg)
-		tmp.seek(0)
+	tmp = tempfile.NamedTemporaryFile(delete=True, mode="w+",
+	                                  suffix=".svg")
+	tmp.write(svg)
+	tmp.seek(0)
 
 	for c in chars:
 		glyph = font.createMappedChar(ord(c))
 		glyph.width = fontem
 		glyph.vwidth = fontem
-		if svg:
-			glyph.importOutlines(tmp.name)
-			glyph.left_side_bearing = round(fontem / charwidth / 2)
-			glyph.right_side_bearing = round(fontem / charwidth / 2)
+		glyph.importOutlines(tmp.name)
 
 	tmp.close()
 
