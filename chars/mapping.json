@@ -80,7 +80,7 @@
 	"symbols/lessthan": ["<"],
 	"symbols/minus": ["-"],
 	"symbols/openparen": ["("],
-	"symbols/percent": ["&"],
+	"symbols/percent": ["%"],
 	"symbols/pipe": ["|"],
 	"symbols/plus": ["+"],
 	"symbols/question": ["?"],
