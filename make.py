@@ -10,6 +10,8 @@ charwidth, charheight = 4, 5
 pxbetween = 1
 fontem = 400
 
+charratio = (charwidth + pxbetween) / charheight
+
 font = fontforge.font()
 
 font.familyname = fontname
@@ -71,8 +73,8 @@ for filename, chars in mapping.items():
 
 	for c in chars:
 		glyph = font.createMappedChar(ord(c))
-		glyph.width = fontem
-		glyph.vwidth = fontem
+		glyph.width = round(fontem * charratio)
+		glyph.vwidth = round(fontem * charratio)
 		glyph.importOutlines(tmp.name)
 
 	tmp.close()
