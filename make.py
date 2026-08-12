@@ -38,7 +38,7 @@ def gridtosvg(grid):
 	svg += 'preserveAspectRatio="xMidYMid meet" rendering="crispEdges">'
 
 	for p in pixels:
-		svg += f'<rect x="{p[0] + 0.5}" y="{p[1] + 0.5}" width="1" '
+		svg += f'<rect x="{p[0] + 0.5}" y="{p[1]}" width="1" '
 		svg += 'height="1" fill="#000000" shape-rendering="crispEdges">'
 		svg += '</rect>'
 
