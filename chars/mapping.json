@@ -67,6 +67,7 @@
 	"symbols/ampersand": ["&"],
 	"symbols/asterisk": ["*"],
 	"symbols/backslash": ["\\"],
+	"symbols/caret": ["^"],
 	"symbols/closedparen": [")"],
 	"symbols/colon": [":"],
 	"symbols/comma": [","],
