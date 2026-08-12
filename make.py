@@ -33,13 +33,18 @@ def gridtosvg(grid):
 				pixels.append([x, y])
 
 	svg = '<svg xmlns="http://www.w3.org/2000/svg" '
-	svg += f'width="{charwidth}" height="{charheight}" '
-	svg += f'viewBox="0 0 {charwidth} {charheight}" '
+	svg += f'width="{charwidth + 1}" height="{charheight}" '
+	svg += f'viewBox="0 0 {charwidth + 1} {charheight}" '
 	svg += 'preserveAspectRatio="xMidYMid meet" rendering="crispEdges">'
 
 	for p in pixels:
-		svg += f'<rect x="{p[0]}" y="{p[1]}" width="1" height="1" '
-		svg += 'fill="#000000" shape-rendering="crispEdges"></rect>'
+		svg += f'<rect x="{p[0] + 0.5}" y="{p[1] + 0.5}" width="1" '
+		svg += 'height="1" fill="#000000" shape-rendering="crispEdges">'
+		svg += '</rect>'
+
+	if not pixels:
+		svg += '<rect x="0" y="0" width="0" height="0" fill="none">'
+		svg += '</rect>'
 
 	svg += '</svg>'
 
