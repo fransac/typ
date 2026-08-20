@@ -6,7 +6,7 @@ import tempfile
 
 fontname = "Typ"
 charsdir = "chars"
-charwidth, charheight = 4, 5
+charwidth, charheight = 5, 5
 pxbetween = 1
 fontem = 400
 
