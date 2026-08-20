@@ -4,7 +4,7 @@ import json
 import os
 import tempfile
 
-fontname = "Typ"
+fontname = "typ"
 charsdir = "chars"
 charwidth, charheight = 5, 5
 pxbetween = 1
