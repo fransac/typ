@@ -17,6 +17,6 @@ Building
 Structure
 ---------
 
-The [`chars`](./chars) directory contains the mapping file, which matches each
-raw character file to a list of actual characters. Each raw character file is
-just a grid of dots and hashes; the hashes draw the glyph of the character.
+The <chars> directory contains the mapping file, which matches each raw
+character file to a list of actual characters. Each raw character file is just a
+grid of dots and hashes; the hashes draw the glyph of the character.
