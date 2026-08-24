@@ -1,21 +1,23 @@
-typ
-===
+                                                                             TYP
 
 A typeface.
 
-Requirements
-------------
+
+REQUIREMENTS
+
 
 - Python 3
 - FontForge
 
-Building
---------
+
+BUILDING
+
 
 	$ python3 make.py
 
-Structure
----------
+
+STRUCTURE
+
 
 The <chars> directory contains the mapping file, which matches each raw
 character file to a list of actual characters. Each raw character file is just a
