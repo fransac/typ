@@ -3,16 +3,10 @@ Typ
 
 A typeface.
 
-Requirements
-------------
-
-- Python 3
-- FontForge
-
 Building
 --------
 
-	$ python3 make.py
+	$ make
 
 Structure
 ---------
