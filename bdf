@@ -37,15 +37,23 @@ do
 	[ -n "$char" ] || continue
 	[ -n "$relfile" ] || continue
 
+	case "$char" in
+		' ')
+			bdfchar="space"
+			;;
+		*)
+			bdfchar="$char"
+			;;
+	esac
+
 	file="chars/$relfile"
-	[ "$char" == 'SPACE' ] && char=' '
 	encoding=$(echo "$char" | LC_ALL=C od -A n -t uC \
 	                        | sed 's/^ *//' \
 	                        | cut -d ' ' -f 1)
 
 	swidth=$((advance * 1000 / size))
 
-	echo "STARTCHAR $char"
+	echo "STARTCHAR $bdfchar"
 	echo "ENCODING $encoding"
 	echo "SWIDTH $swidth 0"
 	echo "DWIDTH $advance 0"
