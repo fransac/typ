@@ -74,7 +74,6 @@ z	lowercase/z
 )	symbols/closedparen
 :	symbols/colon
 ,	symbols/comma
-°	symbols/degree
 $	symbols/dollar
 .	symbols/dot
 =	symbols/equal
