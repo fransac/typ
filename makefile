@@ -1,7 +1,7 @@
 include config.mk
 
-BDFOUT = $(FONT_NAME).bdf
-TTFOUT = $(FONT_NAME).ttf
+BDFOUT = $(FONT_ID).bdf
+TTFOUT = $(FONT_ID).ttf
 
 .PHONY: all bdf clean
 
