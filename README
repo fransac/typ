@@ -3,8 +3,22 @@ Typ
 
 A typeface.
 
+Requirements
+------------
+
+To build the BDF file, nothing except a POSIX system is needed.
+
+To build the TTF file, the
+[bdf2ttf Python package](https://pypi.org/project/bdf2ttf/) is required.
+
 Building
 --------
+
+To only build the BDF file, run the following:
+
+	$ make bdf
+
+Otherwise, just run:
 
 	$ make
 
