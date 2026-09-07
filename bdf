@@ -1,0 +1,76 @@
+#!/bin/sh
+set -eu
+
+size=5
+spacing=1
+
+advance=$((size + spacing))
+
+echo 'STARTFONT 2.1'
+echo "FONT -$FONT_NAME-medium-r-normal--$size-$size-72-72-c-$advance-iso10646-1"
+echo "SIZE $size 72 72"
+echo "FONTBOUNDINGBOX $size $size 0 0"
+echo 'STARTPROPERTIES 2'
+echo "FONT_ASCENT $size"
+echo 'FONT_DESCENT 0'
+echo 'ENDPROPERTIES'
+echo "CHARS $(grep '[^[:space:]]' chars/mapping | wc -l)"
+
+rowtohex()
+{
+	value=0
+
+	for n in $(seq $size)
+	do
+		if [ $(echo "$1" | cut -c $n) = '#' ]
+		then
+			add=$(echo "2 ^ (($size - $n + 1) + 7 - $size)" | bc)
+			value=$((value + add))
+		fi
+	done
+
+	printf '%02X\n' "$value"
+}
+
+while IFS=$(printf '\t') read -r char relfile
+do
+	[ -n "$char" ] || continue
+	[ -n "$relfile" ] || continue
+
+	file="chars/$relfile"
+	[ "$char" == 'SPACE' ] && char=' '
+	encoding=$(echo "$char" | LC_ALL=C od -A n -t uC \
+	                        | sed 's/^ *//' \
+	                        | cut -d ' ' -f 1)
+
+	swidth=$((advance * 1000 / size))
+
+	echo "STARTCHAR $char"
+	echo "ENCODING $encoding"
+	echo "SWIDTH $swidth 0"
+	echo "DWIDTH $advance 0"
+	echo "BBX $size $size 0 0"
+	echo 'BITMAP'
+
+	for n in $(seq $size)
+	do
+		row=$(sed -n "${n}p" "$file")
+
+		if [ "${#row}" -ne $size ]
+		then
+			echo "ERROR: $relfile:$n has bad length." >&2
+			exit 1
+		fi
+
+		case "$row" in
+			*[!.#]*)
+				echo "ERROR: $relfile:$n has bad character." >&2
+				exit 1
+				;;
+		esac
+
+		rowtohex "$row"
+	done
+
+	echo 'ENDCHAR'
+done < chars/mapping
