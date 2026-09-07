@@ -1,13 +1,13 @@
 include config.mk
 
-OUT = $(FONT_NAME).bdf
+BDFOUT = $(FONT_NAME).bdf
 
 .PHONY: all clean
 
-all: $(OUT)
+all: $(BDFOUT)
 
 clean:
-	rm -f $(OUT)
+	rm -f $(BDFOUT)
 
-$(OUT):
-	FONT_NAME=$(FONT_NAME) ./bdf > $(OUT)
+$(BDFOUT):
+	FONT_NAME=$(FONT_NAME) ./bdf > $(BDFOUT)
