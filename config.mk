@@ -1,4 +1,4 @@
 FONT_NAME = Typ
-FONT_VERSION = 0.1.1
+FONT_VERSION = 0.2
 
 BDF2TTF = bdf2ttf
