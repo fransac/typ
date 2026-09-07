@@ -12,7 +12,7 @@ clean:
 	rm -f $(BDFOUT) $(PCFOUT) $(TTFOUT)
 
 $(BDFOUT):
-	FONT_NAME=$(FONT_NAME) ./bdf > $(BDFOUT)
+	FONT_NAME=$(FONT_NAME) FONT_VERSION=$(FONT_VERSION) ./bdf > $(BDFOUT)
 
 $(PCFOUT): $(BDFOUT)
 	$(BDFTOPCF) -o $@ $^

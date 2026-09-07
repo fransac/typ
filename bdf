@@ -17,7 +17,7 @@ echo "FACE_NAME \"$FONT_NAME\""
 echo "FAMILY_NAME \"$FONT_NAME\""
 echo "FONT_ASCENT $size"
 echo 'FONT_DESCENT 0'
-echo 'FONT_VERSION "0.1"'
+echo "FONT_VERSION \"$FONT_VERSION\""
 echo "POINT_SIZE $size"
 echo 'RESOLUTION_Y 72'
 echo 'WEIGHT_NAME "Medium"'
