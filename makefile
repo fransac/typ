@@ -4,9 +4,13 @@ BDFOUT = $(FONT_NAME).bdf
 PCFOUT = $(FONT_NAME).pcf
 TTFOUT = $(FONT_NAME).ttf
 
-.PHONY: all clean
+.PHONY: all bdf pcf ttf clean
 
 all: $(BDFOUT) $(PCFOUT) $(TTFOUT)
+
+bdf: $(BDFOUT)
+pcf: $(PCFOUT)
+ttf: $(TTFOUT)
 
 clean:
 	rm -f $(BDFOUT) $(PCFOUT) $(TTFOUT)
