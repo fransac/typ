@@ -3,12 +3,10 @@ include config.mk
 BDFOUT = $(FONT_NAME).bdf
 TTFOUT = $(FONT_NAME).ttf
 
-.PHONY: all bdf ttf clean
+.PHONY: all bdf clean
 
 all: $(BDFOUT) $(TTFOUT)
-
 bdf: $(BDFOUT)
-ttf: $(TTFOUT)
 
 clean:
 	rm -f $(BDFOUT) $(TTFOUT)
