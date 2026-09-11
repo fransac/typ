@@ -6,7 +6,7 @@ TTF_OUT = $(ID).ttf
 SMALL_BDF_OUT = $(SMALL_ID).bdf
 SMALL_TTF_OUT = $(SMALL_ID).ttf
 
-.PHONY: all bdf clean install uninstall
+.PHONY: all bdf clean install-bdf install uninstall
 
 all: $(BDF_OUT) $(TTF_OUT) $(SMALL_BDF_OUT) $(SMALL_TTF_OUT)
 bdf: $(BDF_OUT) $(SMALL_BDF_OUT)
@@ -14,13 +14,16 @@ bdf: $(BDF_OUT) $(SMALL_BDF_OUT)
 clean:
 	rm -f $(BDF_OUT) $(TTF_OUT) $(SMALL_BDF_OUT) $(SMALL_TTF_OUT)
 
-install: all
+install-bdf: bdf
 	mkdir -p $(DESTDIR)$(PREFIX)/share/fonts/$(ID)
-	cp -f $(BDF_OUT) $(TTF_OUT) $(DESTDIR)$(PREFIX)/share/fonts/$(ID)
+	cp -f $(BDF_OUT) $(DESTDIR)$(PREFIX)/share/fonts/$(ID)
 
 	mkdir -p $(DESTDIR)$(PREFIX)/share/fonts/$(SMALL_ID)
-	cp -f $(SMALL_BDF_OUT) $(SMALL_TTF_OUT) \
-	      $(DESTDIR)$(PREFIX)/share/fonts/$(SMALL_ID)
+	cp -f $(SMALL_BDF_OUT) $(DESTDIR)$(PREFIX)/share/fonts/$(SMALL_ID)
+
+install: install-bdf
+	cp -f $(TTF_OUT) $(DESTDIR)$(PREFIX)/share/fonts/$(ID)
+	cp -f $(SMALL_TTF_OUT) $(DESTDIR)$(PREFIX)/share/fonts/$(SMALL_ID)
 
 uninstall:
 	rm -rf $(DESTDIR)$(PREFIX)/share/fonts/$(ID) \
