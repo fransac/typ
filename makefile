@@ -1,25 +1,25 @@
 include config.mk
 
-BDFOUT = $(ID).bdf
-TTFOUT = $(ID).ttf
+BDF_OUT = $(ID).bdf
+TTF_OUT = $(ID).ttf
 
 .PHONY: all bdf clean install uninstall
 
-all: $(BDFOUT) $(TTFOUT)
-bdf: $(BDFOUT)
+all: $(BDF_OUT) $(TTF_OUT)
+bdf: $(BDF_OUT)
 
 clean:
-	rm -f $(BDFOUT) $(TTFOUT)
+	rm -f $(BDF_OUT) $(TTF_OUT)
 
 install: all
 	mkdir -p $(DESTDIR)$(PREFIX)/share/fonts/$(ID)
-	cp -f $(BDFOUT) $(TTFOUT) $(DESTDIR)$(PREFIX)/share/fonts/$(ID)
+	cp -f $(BDF_OUT) $(TTF_OUT) $(DESTDIR)$(PREFIX)/share/fonts/$(ID)
 
 uninstall:
 	rm -rf $(DESTDIR)$(PREFIX)/share/fonts/$(ID)
 
-$(BDFOUT):
-	NAME=$(NAME) VERSION=$(VERSION) ./bdf > $(BDFOUT)
+$(BDF_OUT):
+	NAME=$(NAME) VERSION=$(VERSION) ./bdf > $(BDF_OUT)
 
-$(TTFOUT): $(BDFOUT)
+$(TTF_OUT): $(BDF_OUT)
 	$(BDF2TTF) -o $@ $^
