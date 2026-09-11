@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-size=$(cat chars/size)
+size=$(cat "$ID/size")
 
 echo 'STARTFONT 2.1'
 echo "FONT -$NAME-medium-r-normal--$size-$size-72-72-c-$size-iso10646-1"
@@ -20,7 +20,7 @@ echo 'RESOLUTION_Y 72'
 echo 'WEIGHT_NAME "Medium"'
 echo 'ENDPROPERTIES'
 
-echo "CHARS $(grep '[^[:space:]]' chars/mapping | wc -l)"
+echo "CHARS $(grep '[^[:space:]]' "$ID/mapping" | wc -l)"
 
 rowtohex()
 {
@@ -52,7 +52,7 @@ do
 			;;
 	esac
 
-	file="chars/$relfile"
+	file="$ID/$relfile"
 	encoding=$(echo "$char" | LC_ALL=C od -A n -t uC \
 	                        | sed 's/^ *//' \
 	                        | cut -d ' ' -f 1)
@@ -85,6 +85,6 @@ do
 	done
 
 	echo 'ENDCHAR'
-done < chars/mapping
+done < "$ID/mapping"
 
 echo 'ENDFONT'

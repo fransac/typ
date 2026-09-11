@@ -19,8 +19,7 @@ uninstall:
 	rm -rf $(DESTDIR)$(PREFIX)/share/fonts/$(ID)
 
 $(BDF_OUT):
-	NAME=$(NAME) VERSION=$(VERSION) ./bdf > $@
-
+	ID=$(ID) NAME=$(NAME) VERSION=$(VERSION) ./bdf > $@
 
 $(TTF_OUT): $(BDF_OUT)
 	$(BDF2TTF) -o $@ $^
