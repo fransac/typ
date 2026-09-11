@@ -21,7 +21,7 @@ install-bdf: bdf
 	mkdir -p $(DESTDIR)$(PREFIX)/share/fonts/$(SMALL_ID)
 	cp -f $(SMALL_BDF_OUT) $(DESTDIR)$(PREFIX)/share/fonts/$(SMALL_ID)
 
-install: install-bdf
+install: all install-bdf
 	cp -f $(TTF_OUT) $(DESTDIR)$(PREFIX)/share/fonts/$(ID)
 	cp -f $(SMALL_TTF_OUT) $(DESTDIR)$(PREFIX)/share/fonts/$(SMALL_ID)
 
