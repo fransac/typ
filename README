@@ -25,6 +25,8 @@ Otherwise, just run:
 Structure
 ---------
 
-The <chars> directory contains the mapping file, which matches each raw
-character file to a list of actual characters. Each raw character file is just a
-grid of dots and hashes; the hashes draw the glyph of the character.
+The <chars> directory contains 2 main files:
+
+- mapping: a TSV file matching each character to a raw character file.
+- size: a file that only contains an integer string; this is the width and
+  height of every character of the font.
