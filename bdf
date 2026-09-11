@@ -70,13 +70,13 @@ do
 
 		if [ "${#row}" -ne $size ]
 		then
-			echo "ERROR: $relfile:$n has bad length." >&2
+			echo "ERROR: $ID/$relfile:$n has bad length." >&2
 			exit 1
 		fi
 
 		case "$row" in
 			*[!.#]*)
-				echo "ERROR: $relfile:$n has bad character." >&2
+				echo "ERROR: $ID/$relfile:$n has bad char." >&2
 				exit 1
 				;;
 		esac
