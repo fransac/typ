@@ -1,7 +1,7 @@
 ID = typ
 NAME = Typ
-SMALL_ID = typ-tiny
-SMALL_NAME = "Typ Tiny"
+TINY_ID = typ-tiny
+TINY_NAME = "Typ Tiny"
 VERSION = 0.6
 
 BDF2PCF = bdftopcf
