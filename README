@@ -14,13 +14,22 @@ To build the TTF files, the
 Building
 --------
 
-To only build the BDF files, run the following:
+To only build the BDF/PCF/TTF files, run the following:
 
 	$ make bdf
 
-Otherwise, just run:
+	$ make pcf
+
+	$ make ttf
+
+To make all of them, just run:
 
 	$ make
+
+Installation
+------------
+
+	# make install
 
 Structure
 ---------
