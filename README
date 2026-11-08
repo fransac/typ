@@ -3,32 +3,10 @@ Typ
 
 A pixel typeface.
 
-Requirements
-------------
-
-To build the BDF files, nothing except a POSIX system is needed.
-
-To build the TTF files, the
-[bdf2ttf Python package](https://pypi.org/project/bdf2ttf/) is required.
-
-Building
---------
-
-To only build the BDF/PCF/TTF files, run the following:
-
-	$ make bdf
-
-	$ make pcf
-
-	$ make ttf
-
-To make all of them, just run:
-
-	$ make
-
 Installation
 ------------
 
+	$ make
 	# make install
 
 Structure
