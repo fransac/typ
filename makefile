@@ -12,6 +12,7 @@ clean:
 install: all
 	mkdir -p $(DESTDIR)$(PREFIX)/share/fonts
 	cp -f $(OUT) $(DESTDIR)$(PREFIX)/share/fonts
+	chmod 644 $(DESTDIR)$(PREFIX)/share/fonts/$(OUT)
 
 uninstall:
 	rm -rf $(DESTDIR)$(PREFIX)/share/fonts/$(OUT)
