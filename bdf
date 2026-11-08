@@ -8,17 +8,6 @@ echo "FONT -$NAME-medium-r-normal--$size-$size-72-72-c-$size-iso10646-1"
 echo "SIZE $size 72 72"
 echo "FONTBOUNDINGBOX $size $size 0 0"
 
-echo 'STARTPROPERTIES 9'
-echo 'COPYRIGHT ""'
-echo "FACE_NAME \"$NAME\""
-echo "FAMILY_NAME \"$NAME\""
-echo "FONT_ASCENT $size"
-echo 'FONT_DESCENT 0'
-echo "POINT_SIZE $size"
-echo 'RESOLUTION_Y 72'
-echo 'WEIGHT_NAME "Medium"'
-echo 'ENDPROPERTIES'
-
 echo "CHARS $(grep '[^[:space:]]' "src/mapping" | wc -l)"
 
 rowtohex()
