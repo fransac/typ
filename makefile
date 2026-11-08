@@ -10,11 +10,11 @@ clean:
 	rm -f $(OUT)
 
 install: all
-	mkdir -p $(DESTDIR)$(PREFIX)/share/fonts/$(ID)
-	cp -f $(OUT) $(DESTDIR)$(PREFIX)/share/fonts/$(ID)
+	mkdir -p $(DESTDIR)$(PREFIX)/share/fonts
+	cp -f $(OUT) $(DESTDIR)$(PREFIX)/share/fonts
 
 uninstall:
-	rm -rf $(DESTDIR)$(PREFIX)/share/fonts/$(ID)
+	rm -rf $(DESTDIR)$(PREFIX)/share/fonts/$(OUT)
 
 $(OUT):
 	ID=$(ID) NAME=$(NAME) ./bdf > $@
