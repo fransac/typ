@@ -1,6 +1,6 @@
 include config.mk
 
-OUT = $(ID).bdf
+OUT = typ.bdf
 
 .PHONY: all clean install uninstall
 
@@ -17,4 +17,4 @@ uninstall:
 	rm -rf $(DESTDIR)$(PREFIX)/share/fonts/$(OUT)
 
 $(OUT):
-	ID=$(ID) NAME=$(NAME) ./bdf > $@
+	NAME=$(NAME) ./bdf > $@
