@@ -34,12 +34,7 @@ Installation
 Structure
 ---------
 
-There are 2 fonts currently:
-
-- Typ (typ)
-- Typ Tiny (typ-tiny)
-
-Each font directory contains 2 main files:
+The <typ> directory contains 2 main files:
 
 - mapping: a TSV file matching each character to a raw character file.
 - size: a file that only contains an integer string; this is the width and
