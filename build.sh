@@ -3,12 +3,12 @@ set -eu
 
 size=$(cat "src/size")
 
-echo 'STARTFONT 2.1'
-echo "FONT $NAME"
-echo "SIZE $size 75 75"
-echo "FONTBOUNDINGBOX $size $size 0 0"
+printf '%s\n' 'STARTFONT 2.1'
+printf '%s\n' "FONT $NAME"
+printf '%s\n' "SIZE $size 75 75"
+printf '%s\n' "FONTBOUNDINGBOX $size $size 0 0"
 
-echo "CHARS $(grep '[^[:space:]]' "src/mapping" | wc -l)"
+printf '%s\n' "CHARS $(grep '[^[:space:]]' "src/mapping" | wc -l)"
 
 rowtohex()
 {
@@ -16,7 +16,7 @@ rowtohex()
 
 	for n in $(seq $size)
 	do
-		if [ $(printf '%s' "$1" | cut -c $n) = '#' ]
+		if [ $(printf '%s\n' "$1" | cut -c $n) = '#' ]
 		then
 			value=$((value + (1 << (8 - n))))
 		fi
@@ -40,16 +40,16 @@ do
 	esac
 
 	file="src/$relfile"
-	encoding=$(printf '%s' "$char" | LC_ALL=C od -A n -t uC \
+	encoding=$(printf '%s\n' "$char" | LC_ALL=C od -A n -t uC \
 	                               | sed 's/^ *//' \
 	                               | cut -d ' ' -f 1)
 
-	echo "STARTCHAR $bdfchar"
-	echo "ENCODING $encoding"
-	echo "SWIDTH 1000 0"
-	echo "DWIDTH $size 0"
-	echo "BBX $size $size 0 0"
-	echo 'BITMAP'
+	printf '%s\n' "STARTCHAR $bdfchar"
+	printf '%s\n' "ENCODING $encoding"
+	printf '%s\n' "SWIDTH 1000 0"
+	printf '%s\n' "DWIDTH $size 0"
+	printf '%s\n' "BBX $size $size 0 0"
+	printf '%s\n' 'BITMAP'
 
 	for n in $(seq $size)
 	do
@@ -57,13 +57,14 @@ do
 
 		if [ "${#row}" -ne $size ]
 		then
-			echo "ERROR: src/$relfile:$n has bad length." >&2
+			printf '%s\n' "ERROR: src/$relfile:$n has bad length." >&2
 			exit 1
 		fi
 
 		case "$row" in
 			*[!.#]*)
-				echo "ERROR: src/$relfile:$n has bad char." >&2
+				printf '%s\n' \
+				       "ERROR: src/$relfile:$n has bad char." >&2
 				exit 1
 				;;
 		esac
@@ -71,7 +72,7 @@ do
 		rowtohex "$row"
 	done
 
-	echo 'ENDCHAR'
+	printf '%s\n' 'ENDCHAR'
 done < "src/mapping"
 
-echo 'ENDFONT'
+printf '%s\n' 'ENDFONT'
