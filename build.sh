@@ -18,8 +18,7 @@ rowtohex()
 	do
 		if [ $(printf '%s' "$1" | cut -c $n) = '#' ]
 		then
-			add=$(echo "2 ^ (($size - $n + 1) + 7 - $size)" | bc)
-			value=$((value + add))
+			value=$((value + (1 << (8 - n))))
 		fi
 	done
 
