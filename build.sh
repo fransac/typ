@@ -4,7 +4,7 @@ set -eu
 size=$(cat "src/size")
 
 echo 'STARTFONT 2.1'
-echo "FONT -$NAME-medium-r-normal--$size-$size-75-75-c-$size-iso10646-1"
+echo "FONT $NAME"
 echo "SIZE $size 75 75"
 echo "FONTBOUNDINGBOX $size $size 0 0"
 
