@@ -16,7 +16,7 @@ rowtohex()
 
 	for n in $(seq $size)
 	do
-		if [ $(echo "$1" | cut -c $n) = '#' ]
+		if [ $(printf '%s' "$1" | cut -c $n) = '#' ]
 		then
 			add=$(echo "2 ^ (($size - $n + 1) + 7 - $size)" | bc)
 			value=$((value + add))
@@ -41,9 +41,9 @@ do
 	esac
 
 	file="src/$relfile"
-	encoding=$(echo "$char" | LC_ALL=C od -A n -t uC \
-	                        | sed 's/^ *//' \
-	                        | cut -d ' ' -f 1)
+	encoding=$(printf '%s' "$char" | LC_ALL=C od -A n -t uC \
+	                               | sed 's/^ *//' \
+	                               | cut -d ' ' -f 1)
 
 	echo "STARTCHAR $bdfchar"
 	echo "ENCODING $encoding"
